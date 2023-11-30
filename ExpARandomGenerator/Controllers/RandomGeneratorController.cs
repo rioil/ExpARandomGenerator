@@ -4,7 +4,7 @@ using System.Text;
 namespace ExpARandomGenerator.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/")]
     public class RandomGeneratorController : ControllerBase
     {
         private readonly ILogger<RandomGeneratorController> _logger;
