@@ -33,7 +33,7 @@ namespace ExpARandomGenerator.Controllers
 
             return builder.ToString();
         }
-    }
 
-    public record RandomData(string Data1, string Data2);
+        public record RandomData(string Data1, string Data2);
+    }
 }
