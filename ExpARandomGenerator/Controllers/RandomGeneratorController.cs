@@ -9,6 +9,8 @@ namespace ExpARandomGenerator.Controllers
     {
         private readonly ILogger<RandomGeneratorController> _logger;
 
+        private readonly byte[] _numbers = Enumerable.Range(0, 16).Select(x => (byte)x).ToArray();
+
         public RandomGeneratorController(ILogger<RandomGeneratorController> logger)
         {
             _logger = logger;
@@ -23,17 +25,10 @@ namespace ExpARandomGenerator.Controllers
         private string GenerateRandomData()
         {
             var builder = new StringBuilder();
-            int previos = -1;
-            for (int i = 0; i < 8; i++)
+            var shuffled = _numbers.OrderBy(x => Random.Shared.Next()).Take(8);
+            foreach (var number in shuffled)
             {
-                int number;
-                do
-                {
-                    number = Random.Shared.Next(0x0, 0xF);
-                } while (previos == number);
-                
-                previos = number;
-                builder.Append(number.ToString("X1"));
+                builder.AppendFormat("{0:X1}", number);
             }
 
             return builder.ToString();
