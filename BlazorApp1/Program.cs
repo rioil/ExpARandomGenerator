@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-namespace ExpARandomGenerator
+namespace BlazorApp1
 {
     public class Program
     {
