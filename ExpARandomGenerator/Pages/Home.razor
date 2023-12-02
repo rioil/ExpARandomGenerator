@@ -1,0 +1,65 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<div class="text-center">
+    <button class="btn btn-primary" @onclick="RegenerateData">Regenerate</button>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Data.Count; i++)
+            {
+                var digits = Data[i];
+                <tr>
+                    <td class="align-middle">Data@(i)</td>
+                    @foreach (var digit in digits)
+                    {
+                        <td>
+                            <div class="h2">@digit.ToString("X1")</div>
+                            <div>@Convert.ToString(digit, 2).PadLeft(4, '0')</div>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private readonly byte[] _numbers = Enumerable.Range(0, 16).Select(x => (byte)x).ToArray();
+
+    public IList<IList<byte>> Data { get; set; } = Array.Empty<byte[]>();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        RegenerateData();
+    }
+
+    private void RegenerateData()
+    {
+        Data = new byte[][] { GenerateRandomData(), GenerateRandomData() };
+    }
+
+    private byte[] GenerateRandomData()
+    {
+        const int Digits = 8;
+        var data = _numbers.OrderBy(x => Random.Shared.Next())
+                           .Take(Digits)
+                           .ToArray();
+        return data;
+    }
+}
