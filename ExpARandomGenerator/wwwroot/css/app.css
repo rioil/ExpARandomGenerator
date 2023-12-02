@@ -101,3 +101,20 @@ a, .btn-link {
 code {
     color: #c02d76;
 }
+
+.digit {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 30px 10px;
+    row-gap: 10px;
+    column-gap: 2px;
+}
+
+.digit-num {
+    grid-row: 1;
+    grid-column: 1 / -1;
+}
+
+.digit-bit-indicator {
+    grid-row: 2;
+}

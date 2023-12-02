@@ -2,21 +2,21 @@
 
 <PageTitle>Home</PageTitle>
 
-<div class="text-center">
+<div class="text-left">
     <button class="btn btn-primary" @onclick="RegenerateData">Regenerate</button>
 
-    <table class="table">
+    <table class="table table-hover table-responsive w-auto text-center">
         <thead>
             <tr>
-                <th></th>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th>5</th>
-                <th>6</th>
-                <th>7</th>
-                <th>8</th>
+                <th scope="col"></th>
+                <th scope="col" style="width: 60px">1</th>
+                <th scope="col" style="width: 60px">2</th>
+                <th scope="col" style="width: 60px">3</th>
+                <th scope="col" style="width: 60px">4</th>
+                <th scope="col" style="width: 60px">5</th>
+                <th scope="col" style="width: 60px">6</th>
+                <th scope="col" style="width: 60px">7</th>
+                <th scope="col" style="width: 60px">8</th>
             </tr>
         </thead>
         <tbody>
@@ -24,12 +24,20 @@
             {
                 var digits = Data[i];
                 <tr>
-                    <td class="align-middle">Data@(i)</td>
+                    <th scope="col" class="align-middle">Data@(i + 1)</th>
                     @foreach (var digit in digits)
                     {
                         <td>
-                            <div class="h2">@digit.ToString("X1")</div>
-                            <div>@Convert.ToString(digit, 2).PadLeft(4, '0')</div>
+                            <div class="digit">
+                                <div class="digit-num h2 mb-0">@digit.ToString("X1")</div>
+                                @foreach (var bit in Convert.ToString(digit, 2).PadLeft(4, '0'))
+                                {
+                                    <svg class="digit-bit-indicator" width="10" height="10">
+                                        <circle cx="5" cy="5" r="5"
+                                                fill="@(bit == '1' ? "green" : "lightgray")" />
+                                    </svg>
+                                }
+                            </div>
                         </td>
                     }
                 </tr>
