@@ -105,18 +105,24 @@ code {
 .digit {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 30px 10px;
-    row-gap: 10px;
+    grid-template-rows: 70px 16px;
+    row-gap: 0px;
     column-gap: 1px;
 }
 
 .digit-num {
+    font-size: 3.45rem;
     grid-row: 1;
     grid-column: 1 / -1;
 }
 
 .digit-bit-indicator {
+    display: flex;
+}
+
+.digit-bits {
     grid-row: 2;
+    display: flex;
 }
 
 .digit-col {

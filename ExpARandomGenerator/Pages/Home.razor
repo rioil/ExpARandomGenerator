@@ -5,45 +5,49 @@
 <div class="text-left">
     <button class="btn btn-primary" @onclick="RegenerateData">Regenerate</button>
 
-    <table class="table table-hover table-responsive w-auto text-center">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col" class="digit-col">1</th>
-                <th scope="col" class="digit-col">2</th>
-                <th scope="col" class="digit-col">3</th>
-                <th scope="col" class="digit-col">4</th>
-                <th scope="col" class="digit-col">5</th>
-                <th scope="col" class="digit-col">6</th>
-                <th scope="col" class="digit-col">7</th>
-                <th scope="col" class="digit-col">8</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (int i = 0; i < Data.Count; i++)
-            {
-                var digits = Data[i];
+    <div class="table-responsive">
+        <table class="table table-hover w-auto text-center">
+            <thead>
                 <tr>
-                    <th scope="col" class="align-middle">Data@(i + 1)</th>
-                    @foreach (var digit in digits)
-                    {
-                        <td>
-                            <div class="digit">
-                                <div class="digit-num h2 mb-0">@digit.ToString("X1")</div>
-                                @foreach (var bit in Convert.ToString(digit, 2).PadLeft(4, '0'))
-                                {
-                                    <svg class="digit-bit-indicator" width="10" height="10">
-                                        <circle cx="5" cy="5" r="5"
-                                                fill="@(bit == '1' ? "green" : "lightgray")" />
-                                    </svg>
-                                }
-                            </div>
-                        </td>
-                    }
+                    <th scope="col"></th>
+                    <th scope="col" class="digit-col">0</th>
+                    <th scope="col" class="digit-col">1</th>
+                    <th scope="col" class="digit-col">2</th>
+                    <th scope="col" class="digit-col">3</th>
+                    <th scope="col" class="digit-col">4</th>
+                    <th scope="col" class="digit-col">5</th>
+                    <th scope="col" class="digit-col">6</th>
+                    <th scope="col" class="digit-col">7</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Data.Count; i++)
+                {
+                    var digits = Data[i];
+                    <tr>
+                        <th scope="col" class="align-middle">Data@(i + 1)</th>
+                        @foreach (var digit in digits)
+                        {
+                            <td>
+                                <div class="digit">
+                                    <div class="digit-num">@digit.ToString("X1")</div>
+                                    <div class="digit-bits">
+                                        @foreach (var bit in Convert.ToString(digit, 2).PadLeft(4, '0'))
+                                        {
+                                            <svg class="digit-bit-indicator" width="16" height="16">
+                                                <circle cx="8" cy="8" r="7"
+                                                        fill="@(bit == '1' ? "green" : "lightgray")" />
+                                            </svg>
+                                        }
+                                    </div>
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
 @code {
