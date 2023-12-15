@@ -104,7 +104,7 @@ code {
 
 .digit {
     display: grid;
-    grid-template-columns: 64px;
+    grid-template-columns: 70px;
     grid-template-rows: 3.8rem auto;
     row-gap: 0px;
     column-gap: 1px;
@@ -123,15 +123,10 @@ code {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.digit-col {
-    width: 65px;
-}
-
 .hidden {
     display: none;
 }
 
-.container {
-    display: flex;
-    flex-flow: column;
+.top-row-left {
+    justify-content: space-between !important;
 }
