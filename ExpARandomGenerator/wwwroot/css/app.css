@@ -104,8 +104,8 @@ code {
 
 .digit {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 3.8rem 16px;
+    grid-template-columns: 64px;
+    grid-template-rows: 3.8rem auto;
     row-gap: 0px;
     column-gap: 1px;
 }
@@ -117,15 +117,21 @@ code {
     grid-column: 1 / -1;
 }
 
-.digit-bit-indicator {
-    display: flex;
-}
-
 .digit-bits {
     grid-row: 2;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .digit-col {
     width: 65px;
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    display: flex;
+    flex-flow: column;
 }

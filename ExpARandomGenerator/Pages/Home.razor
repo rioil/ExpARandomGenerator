@@ -3,7 +3,15 @@
 <PageTitle>Home</PageTitle>
 
 <div class="text-left">
-    <button class="btn btn-primary" @onclick="RegenerateData">Regenerate</button>
+    <div>
+        <button class="btn btn-primary" @onclick="RegenerateData">Regenerate</button>
+    </div>
+    <div>
+        <label>
+            <InputCheckbox @bind-Value="IsBitIndicatorEnabled" />
+            Show Bit Indicator
+        </label>
+    </div>
 
     <div class="table-responsive">
         <table class="table table-hover w-auto text-center">
@@ -31,10 +39,10 @@
                             <td>
                                 <div class="digit">
                                     <div class="digit-num">@digit.ToString("X1")</div>
-                                    <div class="digit-bits">
+                                    <div class="digit-bits @(IsBitIndicatorEnabled ? string.Empty : "hidden")">
                                         @foreach (var bit in Convert.ToString(digit, 2).PadLeft(4, '0'))
                                         {
-                                            <svg class="digit-bit-indicator" width="16" height="16">
+                                            <svg width="16" height="16">
                                                 <circle cx="8" cy="8" r="7"
                                                         fill="@(bit == '1' ? "green" : "lightgray")" />
                                             </svg>
@@ -54,6 +62,8 @@
     private readonly byte[] _numbers = Enumerable.Range(0, 16).Select(x => (byte)x).ToArray();
 
     public IList<IList<byte>> Data { get; set; } = Array.Empty<byte[]>();
+
+    public bool IsBitIndicatorEnabled { get; set; } = true;
 
     protected override void OnInitialized()
     {
