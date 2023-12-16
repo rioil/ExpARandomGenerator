@@ -104,21 +104,29 @@ code {
 
 .digit {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 30px 10px;
-    row-gap: 10px;
+    grid-template-columns: 70px;
+    grid-template-rows: 3.8rem auto;
+    row-gap: 0px;
     column-gap: 1px;
 }
 
 .digit-num {
+    font-size: 3.45rem;
+    line-height: 1.1;
     grid-row: 1;
     grid-column: 1 / -1;
 }
 
-.digit-bit-indicator {
+.digit-bits {
     grid-row: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.digit-col {
-    width: 65px;
+.hidden {
+    display: none;
+}
+
+.top-row-left {
+    justify-content: space-between !important;
 }
